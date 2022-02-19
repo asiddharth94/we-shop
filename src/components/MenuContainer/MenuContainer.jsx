@@ -1,10 +1,8 @@
-import { useState } from "react";
-
 import MenuItem from "../MenuItem/MenuItem";
 import "./MenuContainer.scss";
 
 function MenuContainer() {
-  const [section, setSection] = useState([
+  const sections = [
     {
       title: "hats",
       imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
@@ -32,11 +30,11 @@ function MenuContainer() {
       size: "large",
       id: 5,
     },
-  ]);
+  ];
 
   return (
     <div className="menu-container">
-      {section.map(({ title, imageUrl, id, size }) => (
+      {sections.map(({ title, imageUrl, id, size }) => (
         <MenuItem
           key={id}
           menuItemName={title}

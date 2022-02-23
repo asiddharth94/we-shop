@@ -4,8 +4,9 @@ import { Switch, Route } from "react-router-dom";
 
 import Homepage from "./components/Homepage/Homepage";
 import ShopPage from "./components/ShopPage/ShopPage";
-import "./App.css";
 import Header from "./components/Header/Header";
+import Login from "./components/Login/Login";
+import "./App.css";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/shop" component={ShopPage} />
+        <Route path="/login" component={Login} />
       </Switch>
     </div>
   );

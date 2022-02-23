@@ -1,7 +1,7 @@
 import CollectionPreview from "../CollectionPreview/CollectionPreview";
 import SHOP_DATA from "./Shop.data.ts";
 
-function ShopPage() {
+const ShopPage = () => {
   const shopData = SHOP_DATA;
 
   return (
@@ -11,6 +11,6 @@ function ShopPage() {
       ))}
     </div>
   );
-}
+};
 
 export default ShopPage;

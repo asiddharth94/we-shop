@@ -3,14 +3,14 @@ import { withRouter } from "react-router-dom";
 import MenuItemContent from "../MenuItemContent/MenuItemContent";
 import "./MenuItem.scss";
 
-function MenuItem({
+const MenuItem = ({
   menuItemName,
   menuItemImage,
   size,
   linkUrl,
   history,
   match,
-}) {
+}) => {
   return (
     <div
       className={`${size} menu-item`}
@@ -23,6 +23,6 @@ function MenuItem({
       <MenuItemContent menuItemName={menuItemName} />
     </div>
   );
-}
+};
 
 export default withRouter(MenuItem);

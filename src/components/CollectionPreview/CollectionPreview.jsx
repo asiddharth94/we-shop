@@ -1,7 +1,7 @@
 import CollectionItem from "../CollectionItem/CollectionItem";
 import "./CollectionPreview.scss";
 
-function CollectionPreview({ id, title, items }) {
+const CollectionPreview = ({ id, title, items }) => {
   return (
     <div className="collection-preview">
       <h1 className="title">{title}</h1>
@@ -14,6 +14,6 @@ function CollectionPreview({ id, title, items }) {
       </div>
     </div>
   );
-}
+};
 
 export default CollectionPreview;

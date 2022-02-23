@@ -1,6 +1,6 @@
 import "./CollectionItem.scss";
 
-function CollectionItem({ id, name, price, imageUrl }) {
+const CollectionItem = ({ id, name, price, imageUrl }) => {
   return (
     <div className="collection-item">
       <div
@@ -14,6 +14,6 @@ function CollectionItem({ id, name, price, imageUrl }) {
       </div>
     </div>
   );
-}
+};
 
 export default CollectionItem;

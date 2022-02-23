@@ -1,7 +1,7 @@
 import MenuItem from "../MenuItem/MenuItem";
 import "./MenuContainer.scss";
 
-function MenuContainer() {
+const MenuContainer = () => {
   const sections = [
     {
       title: "hats",
@@ -49,6 +49,6 @@ function MenuContainer() {
       ))}
     </div>
   );
-}
+};
 
 export default MenuContainer;

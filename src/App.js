@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Switch, Route } from "react-router-dom";
 
@@ -10,11 +10,22 @@ import { auth } from "./firebase/firebase.utils";
 import "./App.css";
 
 function App() {
+  // eslint-disable-next-line no-unused-vars
   const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const unsubsribeAuth = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+    });
+
+    return () => {
+      unsubsribeAuth();
+    };
+  }, []);
 
   return (
     <div>
-      <Header />
+      <Header currentUser={currentUser} />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/shop" component={ShopPage} />

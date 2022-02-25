@@ -40,8 +40,12 @@ const SignIn = () => {
           handleChange={handleChange}
           required
         />
-        <Button type="submit"> SIGN IN </Button>
-        <Button onClick={signInWithGoogle}> SIGN IN WITH GOOGLE </Button>
+        <div className="buttons">
+          <Button type="submit"> SIGN IN </Button>
+          <Button onClick={signInWithGoogle} isGoogleSignIn>
+            SIGN IN WITH GOOGLE
+          </Button>
+        </div>
       </form>
     </div>
   );

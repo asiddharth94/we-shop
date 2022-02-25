@@ -32,6 +32,10 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    console.log(currentUser, "hook");
+  }, [currentUser]);
+
   return (
     <div>
       <Header currentUser={currentUser} />

@@ -1,5 +1,5 @@
 import firebase from "firebase/compat/app";
-// import "firebase/compat/firestore";
+import "firebase/compat/firestore";
 
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
@@ -13,12 +13,38 @@ const config = {
   measurementId: "G-DB32SJQGCY",
 };
 
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+  if (!userAuth) return;
+
+  // querying the database for the logged in User
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+
+  const snapshot = await userRef.get();
+
+  // saving the User if it does not exist already
+  if (!snapshot.exists) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await userRef.set({
+        displayName,
+        email,
+        createdAt,
+        ...additionalData,
+      });
+    } catch (error) {
+      console.error("Error creating User", error.message);
+    }
+  }
+
+  return userRef;
+};
+
 firebase.initializeApp(config);
 
-// export const auth = firebase.auth();
-
 export const auth = getAuth();
-// export const firestore = firebase.firestore();
+export const firestore = firebase.firestore();
 
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });

@@ -8,7 +8,7 @@ import ShopPage from "./components/ShopPage/ShopPage";
 import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-import { setCurrentUser } from "./redux/user/user.action";
+import { setCurrentUser } from "./redux/user/user.actions";
 import "./App.css";
 
 function App({ setCurrentUser, currentUser }) {

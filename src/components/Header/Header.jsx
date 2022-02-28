@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
-
 import { connect } from "react-redux";
 
+import CartIcon from "../CartIcon/CartIcon";
+import CartDropdown from "../CartDropdown/CartDropdown";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
 import "./Header.scss";
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, cartVisibility }) => {
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -28,7 +29,9 @@ const Header = ({ currentUser }) => {
             SIGN IN
           </Link>
         )}
+        <CartIcon />
       </div>
+      {cartVisibility ? <CartDropdown /> : null}
     </div>
   );
 };
@@ -37,6 +40,7 @@ const Header = ({ currentUser }) => {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser,
+    cartVisibility: state.cart.cartVisibility,
   };
 };
 

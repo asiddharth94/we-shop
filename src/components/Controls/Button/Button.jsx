@@ -1,9 +1,10 @@
 import "./Button.scss";
 
-const Button = ({ children, isGoogleSignIn, ...otherProps }) => {
+const Button = ({ children, isGoogleSignIn, inverted, ...otherProps }) => {
   return (
     <button
-      className={`${isGoogleSignIn ? "google-sign-in" : ""} button`}
+      className={`${inverted ? "inverted" : ""}
+      ${isGoogleSignIn ? "google-sign-in" : ""} button`}
       {...otherProps}
     >
       {children.toUpperCase()}

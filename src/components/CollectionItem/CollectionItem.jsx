@@ -1,3 +1,4 @@
+import Button from "../Controls/Button/Button";
 import "./CollectionItem.scss";
 
 const CollectionItem = ({ id, name, price, imageUrl }) => {
@@ -12,6 +13,7 @@ const CollectionItem = ({ id, name, price, imageUrl }) => {
 
         <span className="price">${price}</span>
       </div>
+      <Button inverted>ADD TO CART</Button>
     </div>
   );
 };

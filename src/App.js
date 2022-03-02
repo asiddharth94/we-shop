@@ -13,6 +13,7 @@ import "./App.css";
 
 function App({ setCurrentUser, currentUser }) {
   useEffect(() => {
+    // handle authentication based on user log-in or log-out
     const unsubsribeAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
@@ -27,6 +28,7 @@ function App({ setCurrentUser, currentUser }) {
       setCurrentUser(userAuth);
     });
 
+    // clean-up
     return () => {
       unsubsribeAuth();
     };

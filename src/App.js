@@ -9,6 +9,7 @@ import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
+import { selectCurrentUser } from "./redux/user/user.selectors";
 import "./App.css";
 
 function App({ setCurrentUser, currentUser }) {
@@ -52,7 +53,7 @@ function App({ setCurrentUser, currentUser }) {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.user.currentUser,
+    currentUser: selectCurrentUser(state),
   };
 };
 

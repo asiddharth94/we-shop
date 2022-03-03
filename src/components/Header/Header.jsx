@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
 import CartIcon from "../CartIcon/CartIcon";
 import CartDropdown from "../CartDropdown/CartDropdown";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
+import { selectCartVisibility } from "../../redux/cart/cart.selectors";
 import "./Header.scss";
 
 const Header = ({ currentUser, cartVisibility }) => {
+  console.log("being called from header");
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -37,11 +41,12 @@ const Header = ({ currentUser, cartVisibility }) => {
 };
 
 // First argument to connect, this funtion allows us to access the state(root-reducer to be specific)
-const mapStateToProps = (state) => {
-  return {
-    currentUser: state.user.currentUser,
-    cartVisibility: state.cart.cartVisibility,
-  };
-};
+
+// updating with createStructuredSelector - with this, we don't need to pass in the state
+// it already has access to it and passes it to selectors implicitly
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  cartVisibility: selectCartVisibility,
+});
 
 export default connect(mapStateToProps)(Header);

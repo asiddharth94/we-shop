@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
 import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
 import { toggleCartDropdown } from "../../redux/cart/cart.actions";
@@ -14,11 +15,9 @@ const CartIcon = ({ itemsInCart, toggleCartVisibility }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    itemsInCart: selectCartItemsCount(state),
-  };
-};
+const mapStateToProps = createStructuredSelector({
+  itemsInCart: selectCartItemsCount,
+});
 
 const mapDispatchToProps = (dispatch) => {
   return {

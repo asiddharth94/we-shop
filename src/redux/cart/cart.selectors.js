@@ -23,3 +23,7 @@ export const selectCartVisibility = createSelector(
   [selectCart],
   (cart) => cart.cartVisibility
 );
+
+export const selectCartTotal = createSelector([selectCartItems], (cartItems) =>
+  cartItems.reduce((acc, curr) => acc + curr.quantity * curr.price, 0)
+);

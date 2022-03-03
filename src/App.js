@@ -7,6 +7,7 @@ import Homepage from "./components/Homepage/Homepage";
 import ShopPage from "./components/ShopPage/ShopPage";
 import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
+import Checkout from "./components/Checkout/Checkout";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
@@ -41,6 +42,7 @@ function App({ setCurrentUser, currentUser }) {
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/shop" component={ShopPage} />
+        <Route exact path="/checkout" component={Checkout} />
         <Route
           exact
           path="/login"

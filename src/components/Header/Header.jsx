@@ -11,7 +11,6 @@ import { selectCartVisibility } from "../../redux/cart/cart.selectors";
 import "./Header.scss";
 
 const Header = ({ currentUser, cartVisibility }) => {
-  console.log("being called from header");
   return (
     <div className="header">
       <Link className="logo-container" to="/">

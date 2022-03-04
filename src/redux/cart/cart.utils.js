@@ -18,3 +18,13 @@ export const addItemsToCart = (cartItems, cartItemToAdd) => {
 
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
+
+// handle onClick of 'X' in <CheckoutItem /> to completely clear the item from cart
+export const clearItemFromCart = (cartItems, cartItemToClear) => {
+  // returns all other item except for cartItemToClear
+  const remainingCartItems = cartItems.filter(
+    (cartItem) => cartItem.id !== cartItemToClear.id
+  );
+
+  return remainingCartItems;
+};

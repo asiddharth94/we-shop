@@ -8,24 +8,12 @@ import ShopPage from "./components/ShopPage/ShopPage";
 import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
 import Checkout from "./components/Checkout/Checkout";
-import {
-  auth,
-  createUserProfileDocument,
-  addCollectionAndDocuments,
-} from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
-import { selectCollectionForPreview } from "./redux/shop/shop.selector";
 import "./App.css";
 
-function App({ setCurrentUser, currentUser, collectionsArray }) {
-  useEffect(() => {
-    addCollectionAndDocuments(
-      "collections",
-      collectionsArray.map(({ title, items }) => ({ title, items }))
-    );
-  }, []);
-
+function App({ setCurrentUser, currentUser }) {
   useEffect(() => {
     // handle authentication based on user log-in or log-out
     const unsubsribeAuth = auth.onAuthStateChanged(async (userAuth) => {
@@ -68,7 +56,6 @@ function App({ setCurrentUser, currentUser, collectionsArray }) {
 const mapStateToProps = (state) => {
   return {
     currentUser: selectCurrentUser(state),
-    collectionsArray: selectCollectionForPreview(state),
   };
 };
 

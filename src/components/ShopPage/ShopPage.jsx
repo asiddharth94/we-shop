@@ -33,7 +33,7 @@ const ShopPage = ({ match, dispatch, isLoading }) => {
     return () => {
       unsubscribeFromSnapshot();
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="shop-page">

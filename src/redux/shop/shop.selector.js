@@ -8,13 +8,13 @@ export const selectShopData = createSelector(
 );
 
 export const selectCollection = (collectionUrlParam) =>
-  createSelector(
-    [selectShopData],
-    (collections) => collections[collectionUrlParam]
+  createSelector([selectShopData], (collections) =>
+    collections ? collections[collectionUrlParam] : null
   );
 
 //  converts object to array, since we updated our SHOP_DATA
 export const selectCollectionForPreview = createSelector(
   [selectShopData],
-  (collections) => Object.keys(collections).map((key) => collections[key])
+  (collections) =>
+    collections ? Object.keys(collections).map((key) => collections[key]) : []
 );

@@ -41,6 +41,23 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
+export const convertCollectionsSnapshotToMap = (collections) => {
+  const transformedCollections = collections.docs.map((doc) => {
+    const { title, items } = doc.data();
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items,
+    };
+  });
+
+  return transformedCollections.reduce((acc, curr) => {
+    acc[curr.title.toLowerCase()] = curr;
+    return acc;
+  }, {});
+};
+
 export const addCollectionAndDocuments = async (
   collectionKey,
   objectsToAdd

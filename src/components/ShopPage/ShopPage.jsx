@@ -22,17 +22,11 @@ const ShopPage = ({ match, dispatch, isLoading }) => {
   useEffect(() => {
     const collectionRef = firestore.collection("collections");
 
-    const unsubscribeFromSnapshot = collectionRef.onSnapshot(
-      async (snapshot) => {
-        const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-        dispatch(updateCollections(collectionsMap));
-        setLoading(false);
-      }
-    );
-
-    return () => {
-      unsubscribeFromSnapshot();
-    };
+    collectionRef.get().then((snapshot) => {
+      const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+      dispatch(updateCollections(collectionsMap));
+      setLoading(false);
+    });
   }, [dispatch]);
 
   return (
